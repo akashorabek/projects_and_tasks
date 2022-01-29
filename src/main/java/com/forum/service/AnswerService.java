@@ -1,9 +1,11 @@
 package com.forum.service;
 
 import com.forum.model.Answer;
+import com.forum.model.AnswerRate;
 import com.forum.model.DTO.AnswerDTO;
 import com.forum.model.Topic;
 import com.forum.model.User;
+import com.forum.repository.AnswerRateRepository;
 import com.forum.repository.AnswerRepository;
 import com.forum.repository.TopicRepository;
 import com.forum.repository.UserRepository;
@@ -20,6 +22,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class AnswerService {
     private final AnswerRepository repository;
+    private final AnswerRateRepository answerRateRepository;
     private final UserRepository userRepository;
     private final TopicRepository topicRepository;
 
@@ -39,5 +42,29 @@ public class AnswerService {
         answer.setTopic(topic);
         answer.setCreatedAt(currentDate);
         repository.save(answer);
+    }
+
+    public void rate(int answerId, String userEmail, String rateType) {
+        User user = userRepository.findByEmail(userEmail);
+        AnswerRate answerRate = answerRateRepository.getByAnswerIdAndUserId(answerId, user.getId());
+        Answer answer = repository.getById(answerId);
+
+        if (answerRate != null || answer.getUser().getEmail().equals(userEmail)) {
+            return;
+        }
+
+        answerRate = new AnswerRate();
+        answerRate.setUser(user);
+        answerRate.setAnswer(answer);
+
+        if (rateType.equals("liked")) {
+            answerRate.setLiked(true);
+            answerRate.setDisliked(false);
+        } else {
+            answerRate.setLiked(false);
+            answerRate.setDisliked(true);
+        }
+
+        answerRateRepository.save(answerRate);
     }
 }

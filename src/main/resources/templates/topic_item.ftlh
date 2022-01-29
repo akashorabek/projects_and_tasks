@@ -60,8 +60,14 @@
 </div>
 
 <script>
-    getTopicItem(${id})
-    onAddAnswerFormSubmit()
+    <#if userEmail??>
+        getTopicItem(${id}, "${userEmail}");
+        onAddAnswerFormSubmit("${userEmail}")
+        <#else>
+        getTopicItem(${id})
+        onAddAnswerFormSubmit()
+    </#if>
+
 </script>
 </body>
 </html>

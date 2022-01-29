@@ -1,35 +1,31 @@
 package com.forum.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "topics")
-public class Topic {
+@Table(name = "answer_rates")
+public class AnswerRate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    private String name;
-
-    private String description;
-
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "topic")
-    private List<Answer> answers;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "answer_id")
+    private Answer answer;
+
+    private boolean liked;
+    private boolean disliked;
 }

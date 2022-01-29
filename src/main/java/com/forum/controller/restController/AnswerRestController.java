@@ -26,4 +26,9 @@ public class AnswerRestController {
     public void createAnswer(@Valid AnswerDTO answerDTO, Authentication authentication) {
         service.create(answerDTO, authentication.getName());
     }
+
+    @PostMapping("/answers/rates/{rateType}")
+    public void rateAnswer(@RequestParam int answerId, Authentication authentication, @PathVariable String rateType) {
+        service.rate(answerId, authentication.getName(), rateType);
+    }
 }
