@@ -1,0 +1,1 @@
+INSERT INTO users(email, fullName, password, role, enabled) VALUES ('admin@gmail.com', 'Admin', '$2a$12$Dv7fqmlGklrP5vUsi7Lj.erZKypuQxjYx9gowFPGr3LzE/lL9TRqG', 'ROLE_ADMIN', true);

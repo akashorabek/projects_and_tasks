@@ -1,0 +1,93 @@
+.my_form {
+    width: 500px;
+}
+
+.topics {
+    border: 2px solid #ebebeb;
+    padding: 20px;
+}
+.topic_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: .2s;
+    padding: 15px 0;
+    border-bottom: 1px solid transparent;
+    color: black;
+}
+.topic_item:hover {
+    border-color: #0f6674;
+    text-decoration: none;
+}
+.topic_item:hover h3 {
+    color: #0f6674;
+}
+.topic_item:hover h4 {
+    color: #0f6674;
+}
+.topic_item:hover p {
+    color: #0f6674;
+}
+.topic_item:hover span {
+    color: #0f6674;
+}
+.topic_item h3, .topic_item h4, .topic_item p, .topic_item span {
+    width: 20%;
+    transition: .2s;
+}
+.topic_item h3 {
+    font-size: 18px;
+}
+.topic_item h4 {
+    font-weight: normal;
+    font-size: 16px;
+}
+.topic_item p, .topic_item span {
+    font-size: 16px;
+}
+.topic_item_header h3 {
+    font-size: 18px;
+}
+.topic_item_header p {
+    font-size: 16px;
+}
+.topic_item_header span {
+    font-size: 16px;
+    color: #0f6674;
+}
+.topic_item_desc {
+    border: 2px solid #ebebeb;
+    padding: 15px;
+}
+.topic_item_desc_inner {
+    border: 1px solid #ebebeb;
+    padding: 10px;
+}
+.topic_item_desc_inner h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.textarea {
+    resize: vertical;
+    height: 150px;
+}
+.topic_item_desc_inner p {
+    font-size: 16px;
+}
+.topic_item_answer {
+    padding: 15px;
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, .2);
+}
+.topic_item_answer_header h4 {
+    font-size: 15px;
+    margin-right: 20px;
+}
+.topic_item_answer_header span {
+    font-size: 15px;
+    color: #0f6674;
+}
+.warning_message {
+    color: #b21f2d;
+    font-size: 16px;
+    margin: 10px 0;
+}

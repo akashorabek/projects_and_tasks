@@ -1,0 +1,47 @@
+<#macro head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/script.js"></script>
+    <#assign security=JspTaglibs["http://www.springframework.org/security/tags"]/>
+</#macro>
+
+<#macro header>
+
+    <header class="bg-light mb-5">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="/">Forum</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <@security.authorize access="hasRole('ROLE_ANONYMOUS')">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login">Войти</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/register">Регистрация</a>
+                            </li>
+                        </@security.authorize>
+                        <@security.authorize access="isAuthenticated()">
+                            <li id="create_products_link" class="nav-item">
+                                <form action="/logout" method="post">
+                                    <input type="hidden"
+                                           name="${(_csrf.parameterName)!'csrf-param-name'}"
+                                           value="${(_csrf.token)!'csrf-token'}" />
+                                    <button class="btn btn-primary"  href="/places/add">Выйти</button>
+                                </form>
+                            </li>
+                        </@security.authorize>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+</#macro>
