@@ -44,6 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/create_topic").fullyAuthenticated()
+                .antMatchers(HttpMethod.GET, "/cabinet").fullyAuthenticated()
                 .antMatchers(HttpMethod.POST, "/topics").fullyAuthenticated()
                 .antMatchers(HttpMethod.POST, "/answers").fullyAuthenticated()
                 .antMatchers(HttpMethod.POST, "/register").not().fullyAuthenticated()

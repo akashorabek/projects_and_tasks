@@ -31,6 +31,23 @@ function getAllTopics(pageNumber = 0) {
     })
 }
 
+function getAllSearchedTopics(pageNumber = 0, query = "") {
+    $.ajax({
+        method: 'GET',
+        url: `http://localhost:8080/topics/search?query=${query}&page=${pageNumber}`,
+        success: (response) => {
+            handleTopics(response, (i) => getAllSearchedTopics(i, query))
+        }
+    })
+}
+
+function onSearchFormSubmit() {
+    $('#search_topic_form').submit(function (e){
+        e.preventDefault()
+        getAllSearchedTopics(0, $('#search_topic_input').val())
+    })
+}
+
 function handleTopicItem(response) {
     $('.topic_item_header h3').text(response.name)
     let createdDate = getFormatedDate(response.createdAt)

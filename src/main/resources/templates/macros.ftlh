@@ -30,13 +30,16 @@
                             </li>
                         </@security.authorize>
                         <@security.authorize access="isAuthenticated()">
-                            <li id="create_products_link" class="nav-item">
+                            <li class="nav-item">
                                 <form action="/logout" method="post">
                                     <input type="hidden"
                                            name="${(_csrf.parameterName)!'csrf-param-name'}"
                                            value="${(_csrf.token)!'csrf-token'}" />
-                                    <button class="btn btn-primary"  href="/places/add">Выйти</button>
+                                    <button type="submit" class="btn btn-primary">Выйти</button>
                                 </form>
+                            </li>
+                            <li class="nav-item ml-3">
+                                <a href="/cabinet" class="nav-link">Личный кабинет</a>
                             </li>
                         </@security.authorize>
                     </ul>

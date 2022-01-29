@@ -91,3 +91,8 @@
     font-size: 16px;
     margin: 10px 0;
 }
+.cabinet p {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 20px;
+}

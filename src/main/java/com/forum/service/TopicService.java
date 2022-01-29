@@ -27,6 +27,12 @@ public class TopicService {
         return repository.findAll(pageable);
     }
 
+    public Page<Topic> findAllSearchedByQuery(int pageNumber, String query) {
+        int pageSize = 3;
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(Sort.Direction.DESC, "createdAt"));
+        return repository.findAllByQuery(query, pageable);
+    }
+
     public Topic findById(int id) {
         return repository.findById(id).orElseThrow(() -> new TopicNotFoundException("Тема с id " + id + " не найдено"));
     }

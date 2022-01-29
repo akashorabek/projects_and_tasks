@@ -35,4 +35,8 @@ public class UserService implements UserDetailsService {
         repository.save(user);
         return true;
     }
+
+    public User findByEmail(String email) {
+        return repository.findByEmail(email);
+    }
 }

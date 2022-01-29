@@ -5,6 +5,7 @@ import com.forum.model.DTO.TopicDTO;
 import com.forum.model.Topic;
 import com.forum.service.TopicService;
 import lombok.AllArgsConstructor;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
@@ -20,6 +21,12 @@ public class TopicRestController {
     @GetMapping("/topics")
     public Page<Topic> getTopics(@RequestParam(defaultValue = "0") int page) {
         return service.findAllSortedByDate((int)page);
+    }
+
+    @GetMapping("/topics/search")
+    public Page<Topic> getSearchedTopics(@RequestParam(defaultValue = "0") int page,
+                                 @RequestParam(defaultValue = "") String query) {
+        return service.findAllSearchedByQuery((int)page, query);
     }
 
     @GetMapping("/topics/get/{id}")

@@ -4,6 +4,7 @@ import com.forum.model.DTO.RegisterUserDTO;
 import com.forum.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
@@ -43,6 +44,11 @@ public class UserController {
         return "redirect:/";
     }
 
+    @GetMapping("/cabinet")
+    public String viewCabinet(Model model, Authentication authentication) {
+        model.addAttribute("user", service.findByEmail(authentication.getName()));
+        return "cabinet";
+    }
 
     @ExceptionHandler(BindException.class)
     @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)

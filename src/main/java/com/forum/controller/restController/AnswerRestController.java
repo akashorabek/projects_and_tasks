@@ -29,6 +29,8 @@ public class AnswerRestController {
 
     @PostMapping("/answers/rates/{rateType}")
     public void rateAnswer(@RequestParam int answerId, Authentication authentication, @PathVariable String rateType) {
-        service.rate(answerId, authentication.getName(), rateType);
+        if (authentication != null) {
+            service.rate(answerId, authentication.getName(), rateType);
+        }
     }
 }
