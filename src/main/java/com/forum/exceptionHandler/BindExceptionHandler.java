@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @ControllerAdvice(annotations = RestController.class)
@@ -15,7 +16,7 @@ public class BindExceptionHandler {
     @ExceptionHandler(BindException.class)
     @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
     protected ResponseEntity<?> handleBind(BindException ex) {
-        var errors = ex.getFieldErrors()
+        List errors = ex.getFieldErrors()
                 .stream()
                 .map(fe -> fe.getDefaultMessage())
                 .collect(Collectors.toList());

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
@@ -57,7 +58,7 @@ public class UserController {
     @ExceptionHandler(BindException.class)
     @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
     protected String handleRegisterBind(BindException ex, Model model) {
-        var errors = ex.getFieldErrors()
+        List errors = ex.getFieldErrors()
                 .stream()
                 .map(fe -> fe.getDefaultMessage())
                 .collect(Collectors.toList());
