@@ -130,14 +130,19 @@ function handleAnswers(response, callback, topicId, userEmail) {
         if (hasDisliked) {
             dislike.find('i').css('color', 'red')
         }
+        let imageSrc = answer.user.image;
+        imageSrc = imageSrc.slice(25)
         let answer_item = $(`
-               <div class="topic_item_answer my-4">
-                    <div class="topic_item_answer_header mb-2 d-flex align-items-center">
-                        <h4>${answer.user.fullName}</h4>
-                        <span>${createdDate}</span>
+               <div class="topic_item_answer d-flex align-items-center my-4">
+                    <img src="${imageSrc}">
+                    <div>
+                        <div class="topic_item_answer_header mb-2 d-flex align-items-center">
+                            <h4>${answer.user.fullName}</h4>
+                            <span>${createdDate}</span>
+                        </div>
+                        <p>${answer.message}</p>
+                        <div class="topic_item_answer_rates d-flex"></div>
                     </div>
-                    <p>${answer.message}</p>
-                    <div class="topic_item_answer_rates d-flex"></div>
                 </div>
         `)
 

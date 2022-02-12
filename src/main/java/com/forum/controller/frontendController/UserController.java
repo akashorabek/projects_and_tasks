@@ -1,6 +1,7 @@
 package com.forum.controller.frontendController;
 
 import com.forum.model.DTO.RegisterUserDTO;
+import com.forum.model.User;
 import com.forum.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.stream.Collectors;
 
 @Controller
@@ -36,7 +38,7 @@ public class UserController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.SEE_OTHER)
-    public String register(@Valid RegisterUserDTO userDTO, Model model) {
+    public String register(@Valid RegisterUserDTO userDTO, Model model) throws IOException {
         if (!service.register(userDTO)) {
             model.addAttribute("hasServiceErrors", "Пользователь с такой почтой уже есть.");
             return "register";
@@ -46,7 +48,9 @@ public class UserController {
 
     @GetMapping("/cabinet")
     public String viewCabinet(Model model, Authentication authentication) {
-        model.addAttribute("user", service.findByEmail(authentication.getName()));
+        User user = service.findByEmail(authentication.getName());
+        model.addAttribute("user", user);
+        model.addAttribute("image", user.getImage().substring(25));
         return "cabinet";
     }
 

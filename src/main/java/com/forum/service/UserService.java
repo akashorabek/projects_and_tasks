@@ -10,6 +10,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 @Service
 @AllArgsConstructor
 public class UserService implements UserDetailsService {
@@ -25,13 +30,16 @@ public class UserService implements UserDetailsService {
         return (UserDetails) user;
     }
 
-    public boolean register(RegisterUserDTO userDTO) {
+    public boolean register(RegisterUserDTO userDTO) throws IOException {
         User user = repository.findByEmail(userDTO.getEmail());
         if (user != null) {
             return false;
         }
 
-        user = new User(userDTO.getEmail(), userDTO.getFullName(), passwordEncoder.encode(userDTO.getPassword()));
+        BufferedImage bufferedImage = ImageIO.read(userDTO.getImage().getInputStream());
+        File outfile = new File("src/main/resources/static/imgs/" + userDTO.getEmail() + ".png");
+        ImageIO.write(bufferedImage, "png", outfile);
+        user = new User(userDTO.getEmail(), userDTO.getFullName(), passwordEncoder.encode(userDTO.getPassword()), outfile.getPath());
         repository.save(user);
         return true;
     }

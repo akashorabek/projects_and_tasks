@@ -14,6 +14,7 @@
 <div class="container">
     <h2 class="title text-center mb-5 mt-4">Кабинет</h2>
     <div class="cabinet">
+        <img src="${image}">
         <p>Имя: <b>${user.fullName}</b></p>
         <p>Почта: <b>${user.email}</b></p>
     </div>

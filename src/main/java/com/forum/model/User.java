@@ -27,10 +27,13 @@ public class User {
 
     private boolean enabled;
 
-    public User(String email, String fullName, String password) {
+    private String image;
+
+    public User(String email, String fullName, String password, String image) {
         this.email = email;
         this.fullName = fullName;
         this.password = password;
+        this.image = image;
         enabled = true;
         role = "ROLE_USER";
     }
