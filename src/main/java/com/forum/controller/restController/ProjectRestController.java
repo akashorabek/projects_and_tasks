@@ -40,13 +40,13 @@ public class ProjectRestController {
         service.create(projectAddDto, authentication.getName());
     }
 
-    @PostMapping("/api/projects/edit")
+    @PutMapping("/api/projects")
     @ResponseStatus(HttpStatus.OK)
     public void editProject(@Valid ProjectAddDto projectAddDto) {
         service.edit(projectAddDto);
     }
 
-    @PostMapping("/api/projects/delete")
+    @DeleteMapping("/api/projects")
     @ResponseStatus(HttpStatus.OK)
     public void deleteProject(@RequestParam int projectId) {
         service.delete(projectId);

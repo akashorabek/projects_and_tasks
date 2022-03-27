@@ -292,11 +292,11 @@ function onDeleteProjectBtnClick(projectId) {
     var _csrf_token = $('meta[name=_csrf_token]').attr('content');
 
     $.ajax({
-        method: 'POST',
+        method: 'DELETE',
         beforeSend: function (xhr) {
             xhr.setRequestHeader(_csrf_header, _csrf_token);
         },
-        url: 'http://localhost:8080/api/projects/delete',
+        url: 'http://localhost:8080/api/projects',
         data: {
             projectId: projectId
         },
@@ -333,11 +333,11 @@ function onEditProjectBtnClick(projectId) {
         }
 
         $.ajax({
-            method: 'POST',
+            method: 'PUT',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader(_csrf_header, _csrf_token);
             },
-            url: 'http://localhost:8080/api/projects/edit',
+            url: 'http://localhost:8080/api/projects',
             data: form,
             success: () => {
                 window.location.replace("http://localhost:8080/projects/" + projectId);
@@ -355,11 +355,11 @@ function onDeleteTaskBtnClick(taskId, projectId) {
     var _csrf_token = $('meta[name=_csrf_token]').attr('content');
 
     $.ajax({
-        method: 'POST',
+        method: 'DELETE',
         beforeSend: function (xhr) {
             xhr.setRequestHeader(_csrf_header, _csrf_token);
         },
-        url: 'http://localhost:8080/api/tasks/delete',
+        url: 'http://localhost:8080/api/tasks',
         data: {
             taskId: taskId
         },
@@ -395,11 +395,11 @@ function onEditTaskBtnClick(taskId, projectId, task) {
         }
 
         $.ajax({
-            method: 'POST',
+            method: 'PUT',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader(_csrf_header, _csrf_token);
             },
-            url: 'http://localhost:8080/api/tasks/edit',
+            url: 'http://localhost:8080/api/tasks',
             data: form,
             success: () => {
                 window.location.replace("http://localhost:8080/projects/" + projectId);

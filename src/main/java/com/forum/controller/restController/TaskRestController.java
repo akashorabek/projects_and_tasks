@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+// Rest controller for task services
 @RestController
 @AllArgsConstructor
 public class TaskRestController {
@@ -40,13 +41,13 @@ public class TaskRestController {
         }
     }
 
-    @PostMapping("/api/tasks/edit")
+    @PutMapping("/api/tasks")
     @ResponseStatus(HttpStatus.OK)
     public void editTask(@Valid TaskAddDto taskAddDto) {
         service.edit(taskAddDto);
     }
 
-    @PostMapping("/api/tasks/delete")
+    @DeleteMapping("/api/tasks")
     @ResponseStatus(HttpStatus.OK)
     public void deleteTask(@RequestParam int taskId) {
         service.delete(taskId);

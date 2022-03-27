@@ -29,9 +29,9 @@
                 </div>
                 <@security.authorize access="isAuthenticated()">
                     <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Add Task</button>
-                    <button id="edit_project_btn" class="btn btn-warning ml-2" data-value="false">Edit Project</button>
-                    <button id="delete_project_btn" class="btn btn-danger ml-2">Delete Project</button>
                 </@security.authorize>
+                <button id="edit_project_btn" class="btn btn-warning ml-2" data-value="false">Edit Project</button>
+                <button id="delete_project_btn" class="btn btn-danger ml-2">Delete Project</button>
             </div>
            <h3 class="text-center title mt-4">Tasks</h3>
            <div class="project_item_tasks">
