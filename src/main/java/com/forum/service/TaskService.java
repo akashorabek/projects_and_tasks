@@ -28,8 +28,10 @@ public class TaskService {
     private final ProjectRepository projectRepository;
 
     public Page<TaskDto> findTasksByProjectId(int projectId, int pageNumber) {
+        // Pageable configs
         int pageSize = 3;
         Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(Sort.Direction.ASC, "createdAt"));
+
         Page<Task> tasks = repository.findAllByProjectId(projectId, pageable);
         return new PageImpl<TaskDto>(
                 tasks.getContent().stream()

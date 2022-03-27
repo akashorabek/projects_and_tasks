@@ -22,6 +22,7 @@ import javax.sql.DataSource;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private final DataSource dataSource;
 
+    // Setting up the users table for spring security
     @Override
     protected void configure(
             AuthenticationManagerBuilder auth)
@@ -39,6 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authoritiesByUsernameQuery(fetchRolesQuery);
     }
 
+    //Configuring access to requests depending on the role
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http
@@ -63,6 +65,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().accessDeniedPage("/");
     }
 
+
+    // Password encoder for registration
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

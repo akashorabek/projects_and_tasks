@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+// This is global exception handler for all restController in the project
 @ControllerAdvice(annotations = RestController.class)
 public class BindExceptionHandler {
     @ExceptionHandler(BindException.class)

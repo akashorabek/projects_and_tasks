@@ -13,8 +13,8 @@ public enum ProjectStatus {
 
 
     private String label;
-    private static final Map<String, ProjectStatus> BY_LABEL = new HashMap<>();
 
+    private static final Map<String, ProjectStatus> BY_LABEL = new HashMap<>();
     static {
         for(ProjectStatus status: values()) {
             BY_LABEL.put(status.label, status);
@@ -24,6 +24,8 @@ public enum ProjectStatus {
     ProjectStatus(String label) {
         this.label = label;
     }
+
+    // Method for getting status by its label
     public static ProjectStatus valueOfLabel(String label) {
         return BY_LABEL.get(label);
     }

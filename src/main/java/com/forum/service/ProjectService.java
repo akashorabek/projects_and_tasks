@@ -23,8 +23,10 @@ public class ProjectService {
     private final UserRepository userRepository;
 
     public Page<ProjectDto> findAllSortedByDate(int pageNumber) {
+        // Pageable configs
         int pageSize = 3;
         Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(Sort.Direction.ASC, "id"));
+
         Page<Project> projects = repository.findAll(pageable);
         return new PageImpl<ProjectDto>(
                 projects.getContent().stream()
@@ -35,8 +37,10 @@ public class ProjectService {
     }
 
     public Page<ProjectDto> findAllSearchedByQuery(int pageNumber, String query) {
+        // Pageable configs
         int pageSize = 3;
         Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(Sort.Direction.ASC, "id"));
+
         Page<Project> projects = repository.findAllByQuery(query, pageable);
         return new PageImpl<ProjectDto>(
                 projects.getContent().stream()

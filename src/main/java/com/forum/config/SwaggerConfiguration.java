@@ -13,9 +13,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfiguration {
+
+    // Swagger 2 config
     @Bean
     public Docket api() {
-        // Swagger 2 config
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.forum.controller"))

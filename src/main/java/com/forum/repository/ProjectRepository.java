@@ -9,6 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 public interface ProjectRepository extends JpaRepository<Project, Integer> {
     Page<Project> findAll(Pageable pageable);
 
+
+    // Search by matching name or description
     @Query(
             "select t from Project as t where (" +
             "lower(t.name) like CONCAT('%' || lower(:query) || '%') or " +

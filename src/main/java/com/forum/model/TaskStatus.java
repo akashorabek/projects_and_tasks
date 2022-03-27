@@ -23,6 +23,8 @@ public enum TaskStatus {
     TaskStatus(String label) {
         this.label = label;
     }
+
+    // Method for getting status by its label
     public static TaskStatus valueOfLabel(String label) {
         return BY_LABEL.get(label);
     }

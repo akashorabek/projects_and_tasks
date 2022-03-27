@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
+// Class of likes and dislikes of a specific task
 @Entity
 @Getter
 @Setter
