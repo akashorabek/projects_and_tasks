@@ -1,6 +1,6 @@
 package com.forum.service;
 
-import com.forum.model.DTO.RegisterUserDto;
+import com.forum.model.dto.RegisterUserDto;
 import com.forum.model.User;
 import com.forum.repository.UserRepository;
 import lombok.AllArgsConstructor;

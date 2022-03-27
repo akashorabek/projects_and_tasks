@@ -1,7 +1,6 @@
-package com.forum.model.DTO;
+package com.forum.model.dto;
 
 import com.forum.model.Project;
-import com.forum.model.Task;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

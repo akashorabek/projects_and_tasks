@@ -1,6 +1,6 @@
 package com.forum.controller.frontendController;
 
-import com.forum.model.DTO.RegisterUserDto;
+import com.forum.model.dto.RegisterUserDto;
 import com.forum.model.User;
 import com.forum.service.UserService;
 import lombok.AllArgsConstructor;

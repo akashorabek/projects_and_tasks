@@ -1,9 +1,8 @@
 package com.forum.controller.restController;
 
 import com.forum.exception.ProjectNotFoundException;
-import com.forum.model.DTO.ProjectAddDto;
-import com.forum.model.DTO.ProjectDto;
-import com.forum.model.Project;
+import com.forum.model.dto.ProjectAddDto;
+import com.forum.model.dto.ProjectDto;
 import com.forum.service.ProjectService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;

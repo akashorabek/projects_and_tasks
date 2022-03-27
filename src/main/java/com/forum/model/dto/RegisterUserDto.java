@@ -1,4 +1,4 @@
-package com.forum.model.DTO;
+package com.forum.model.dto;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.forum.model.DTO;
+package com.forum.model.dto;
 
 import com.forum.model.TaskRate;
 import lombok.Builder;

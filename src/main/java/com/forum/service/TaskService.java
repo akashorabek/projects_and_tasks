@@ -1,9 +1,8 @@
 package com.forum.service;
 
 import com.forum.model.*;
-import com.forum.model.DTO.ProjectAddDto;
-import com.forum.model.DTO.TaskAddDto;
-import com.forum.model.DTO.TaskDto;
+import com.forum.model.dto.TaskAddDto;
+import com.forum.model.dto.TaskDto;
 import com.forum.repository.TaskRateRepository;
 import com.forum.repository.TaskRepository;
 import com.forum.repository.ProjectRepository;
@@ -12,11 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
-import java.util.List;
 import java.util.stream.Collectors;
 
 @Service

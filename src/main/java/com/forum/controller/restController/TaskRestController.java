@@ -1,12 +1,8 @@
 package com.forum.controller.restController;
 
-import com.forum.model.DTO.ProjectAddDto;
-import com.forum.model.DTO.TaskDto;
-import com.forum.model.Task;
-import com.forum.model.DTO.TaskAddDto;
+import com.forum.model.dto.TaskDto;
+import com.forum.model.dto.TaskAddDto;
 import com.forum.service.TaskService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
