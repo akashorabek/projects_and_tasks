@@ -17,3 +17,4 @@ Technologies used:
 -Postgresql
 -JS, Jquery, Bootstrap
 -freemarker template
+-Swagger 2 (http://localhost:8080/swagger-ui.html)
