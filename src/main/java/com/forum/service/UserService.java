@@ -1,6 +1,6 @@
 package com.forum.service;
 
-import com.forum.model.DTO.RegisterUserDTO;
+import com.forum.model.DTO.RegisterUserDto;
 import com.forum.model.User;
 import com.forum.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -10,9 +10,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 @Service
@@ -30,16 +27,19 @@ public class UserService implements UserDetailsService {
         return (UserDetails) user;
     }
 
-    public boolean register(RegisterUserDTO userDTO) throws IOException {
+    public boolean register(RegisterUserDto userDTO) throws IOException {
         User user = repository.findByEmail(userDTO.getEmail());
         if (user != null) {
             return false;
         }
 
-        BufferedImage bufferedImage = ImageIO.read(userDTO.getImage().getInputStream());
-        File outfile = new File("src/main/resources/static/imgs/" + userDTO.getEmail() + ".png");
-        ImageIO.write(bufferedImage, "png", outfile);
-        user = new User(userDTO.getEmail(), userDTO.getFullName(), passwordEncoder.encode(userDTO.getPassword()), outfile.getPath());
+        user = User.builder()
+                .email(userDTO.getEmail())
+                .fullName(userDTO.getFullName())
+                .password(passwordEncoder.encode(userDTO.getPassword()))
+                .role("ROLE_USER")
+                .enabled(true)
+                .build();
         repository.save(user);
         return true;
     }

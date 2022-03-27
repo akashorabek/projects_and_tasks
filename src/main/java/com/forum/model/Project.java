@@ -1,35 +1,41 @@
 package com.forum.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "topics")
-public class Topic {
+@Builder
+@Table(name = "projects")
+public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
-
     private String description;
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
+
+    @Column(name = "completed_at")
+    private LocalDate completedAt;
+
+    private ProjectStatus status;
+
+    private int priority;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "topic")
-    private List<Answer> answers;
+    @OneToMany(mappedBy = "project", cascade = CascadeType.REMOVE)
+    private List<Task> tasks;
 }

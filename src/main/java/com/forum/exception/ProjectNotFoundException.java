@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.NOT_FOUND)
 @Getter @Setter
 @AllArgsConstructor
-public class TopicNotFoundException extends RuntimeException {
+public class ProjectNotFoundException extends RuntimeException {
     private String message;
 }

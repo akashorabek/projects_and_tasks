@@ -4,14 +4,14 @@
 <html lang="en">
 <head>
     <@p.head />
-    <title>Войти</title>
+    <title>Login</title>
 </head>
 <body>
 <@p.header />
 
 
 <div class="container">
-    <h2 class="title text-center mb-5 mt-4">Логин</h2>
+    <h2 class="title text-center mb-5 mt-4">Login</h2>
     <div class="d-flex align-items-center justify-content-center">
         <form class="my_form" action="/login" method="post">
             <#if hasError??>
@@ -34,7 +34,7 @@
                        value="${(_csrf.token)!'csrf-token'}" />
             </#if>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary">Войти</button>
+                <button type="submit" class="btn btn-primary">Login</button>
             </div>
 
         </form>

@@ -15,7 +15,7 @@
     <header class="bg-light mb-5">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="/">Forum</a>
+                <a class="navbar-brand" href="/">Test</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -23,10 +23,10 @@
                     <ul class="navbar-nav">
                         <@security.authorize access="hasRole('ROLE_ANONYMOUS')">
                             <li class="nav-item">
-                                <a class="nav-link" href="/login">Войти</a>
+                                <a class="nav-link" href="/login">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/register">Регистрация</a>
+                                <a class="nav-link" href="/register">Register</a>
                             </li>
                         </@security.authorize>
                         <@security.authorize access="isAuthenticated()">
@@ -35,11 +35,11 @@
                                     <input type="hidden"
                                            name="${(_csrf.parameterName)!'csrf-param-name'}"
                                            value="${(_csrf.token)!'csrf-token'}" />
-                                    <button type="submit" class="btn btn-primary">Выйти</button>
+                                    <button type="submit" class="btn btn-primary">Logout</button>
                                 </form>
                             </li>
                             <li class="nav-item ml-3">
-                                <a href="/cabinet" class="nav-link">Личный кабинет</a>
+                                <a href="/cabinet" class="nav-link">Cabinet</a>
                             </li>
                         </@security.authorize>
                     </ul>

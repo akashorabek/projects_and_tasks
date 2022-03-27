@@ -1,6 +1,7 @@
 package com.forum.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "users")
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,15 +28,4 @@ public class User {
     private String role;
 
     private boolean enabled;
-
-    private String image;
-
-    public User(String email, String fullName, String password, String image) {
-        this.email = email;
-        this.fullName = fullName;
-        this.password = password;
-        this.image = image;
-        enabled = true;
-        role = "ROLE_USER";
-    }
 }

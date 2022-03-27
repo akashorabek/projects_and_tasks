@@ -43,10 +43,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/create_topic").fullyAuthenticated()
+                .antMatchers(HttpMethod.GET, "/projects/create").fullyAuthenticated()
                 .antMatchers(HttpMethod.GET, "/cabinet").fullyAuthenticated()
-                .antMatchers(HttpMethod.POST, "/topics").fullyAuthenticated()
-                .antMatchers(HttpMethod.POST, "/answers").fullyAuthenticated()
+                .antMatchers(HttpMethod.POST, "/api/projects").fullyAuthenticated()
+                .antMatchers(HttpMethod.POST, "/api/tasks").fullyAuthenticated()
                 .antMatchers(HttpMethod.POST, "/register").not().fullyAuthenticated()
                 .antMatchers(HttpMethod.GET, "/register").not().fullyAuthenticated()
                 .antMatchers(HttpMethod.POST, "/login").not().fullyAuthenticated()

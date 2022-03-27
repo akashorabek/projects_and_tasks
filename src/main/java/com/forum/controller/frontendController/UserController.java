@@ -1,6 +1,6 @@
 package com.forum.controller.frontendController;
 
-import com.forum.model.DTO.RegisterUserDTO;
+import com.forum.model.DTO.RegisterUserDto;
 import com.forum.model.User;
 import com.forum.service.UserService;
 import lombok.AllArgsConstructor;
@@ -39,9 +39,9 @@ public class UserController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.SEE_OTHER)
-    public String register(@Valid RegisterUserDTO userDTO, Model model) throws IOException {
+    public String register(@Valid RegisterUserDto userDTO, Model model) throws IOException {
         if (!service.register(userDTO)) {
-            model.addAttribute("hasServiceErrors", "Пользователь с такой почтой уже есть.");
+            model.addAttribute("hasServiceErrors", "User already exists!");
             return "register";
         }
         return "redirect:/";
@@ -51,7 +51,6 @@ public class UserController {
     public String viewCabinet(Model model, Authentication authentication) {
         User user = service.findByEmail(authentication.getName());
         model.addAttribute("user", user);
-        model.addAttribute("image", user.getImage().substring(25));
         return "cabinet";
     }
 
