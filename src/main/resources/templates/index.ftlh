@@ -19,6 +19,14 @@
         <input class="form-control" id="search_project_input" type="text" name="query" placeholder="Search project by match" required>
         <button class="btn btn-primary ml-2" type="submit">Search</button>
     </form>
+    <div class="mb-3 d-flex">
+        <button class="btn btn-success mx-1" id="sort_projects_status_asc">Sort by Status ASC</button>
+        <button class="btn btn-success mx-1" id="sort_projects_status_desc">Sort by Status DESC</button>
+        <button class="btn btn-success mx-1" id="sort_projects_priority_asc">Sort by Priority ASC</button>
+        <button class="btn btn-success mx-1" id="sort_projects_priority_desc">Sort by Priority DESC</button>
+        <button class="btn btn-success mx-1" id="sort_projects_creationDate_asc">Sort by Creation date ASC</button>
+        <button class="btn btn-success mx-1" id="sort_projects_creationDate_desc">Sort by Creation date DESC</button>
+    </div>
     <@security.authorize access="isAuthenticated()">
         <div class="mb-4">
             <a href="/projects/create" class="btn btn-primary">Create project</a>
@@ -32,6 +40,26 @@
 <script>
     getAllProjects()
     onSearchFormSubmit()
+
+    // sorting functions
+    $('#sort_projects_status_asc').click(function (){
+        getAllProjects(0, "&sort=status,ASC")
+    })
+    $('#sort_projects_status_desc').click(function (){
+        getAllProjects(0, "&sort=status,DESC")
+    })
+    $('#sort_projects_priority_asc').click(function (){
+        getAllProjects(0, "&sort=priority,ASC")
+    })
+    $('#sort_projects_priority_desc').click(function (){
+        getAllProjects(0, "&sort=priority,DESC")
+    })
+    $('#sort_projects_creationDate_asc').click(function (){
+        getAllProjects(0, "&sort=createdAt,ASC")
+    })
+    $('#sort_projects_creationDate_desc').click(function (){
+        getAllProjects(0, "&sort=createdAt,DESC")
+    })
 </script>
 </body>
 </html>

@@ -11,6 +11,8 @@ function handleProjects(response, callback) {
                 <h3>Title: ${project.name}</h3>
                 <h4>Created date: ${project.createdAt}</h4>
                 <p>Author: ${project.username}</p>
+                <span>Status: ${project.status}</span>
+                <span>Priority: ${project.priority}</span>
                 <span>Tasks: ${project.tasks.length}</span>
             </a>
         `)
@@ -20,12 +22,12 @@ function handleProjects(response, callback) {
     handlePagination(response, callback)
 }
 
-function getAllProjects(pageNumber = 0) {
+function getAllProjects(pageNumber = 0, sort="") {
     $.ajax({
         method: 'GET',
-        url: 'http://localhost:8080/api/projects?page=' + pageNumber,
+        url: 'http://localhost:8080/api/projects?page=' + pageNumber + sort,
         success: (response) => {
-            handleProjects(response, (i) => getAllProjects(i))
+            handleProjects(response, (i) => getAllProjects(i, sort))
         }
     })
 }
@@ -411,3 +413,4 @@ function onEditTaskBtnClick(taskId, projectId, task) {
     }
 
 }
+

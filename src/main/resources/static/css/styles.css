@@ -11,9 +11,11 @@
     justify-content: space-between;
     align-items: center;
     transition: .2s;
-    padding: 15px 0;
+    padding: 15px;
     border-bottom: 1px solid transparent;
     color: black;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .1);
+    margin: 10px 0;
 }
 .topic_item:hover {
     border-color: #0f6674;
@@ -32,7 +34,7 @@
     color: #0f6674;
 }
 .topic_item h3, .topic_item h4, .topic_item p, .topic_item span {
-    width: 20%;
+    width: calc(100% / 6 - 3%);
     transition: .2s;
 }
 .topic_item h3 {

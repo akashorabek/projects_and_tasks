@@ -25,11 +25,7 @@ public class ProjectService {
     private final ProjectRepository repository;
     private final UserRepository userRepository;
 
-    public Page<ProjectDto> findAllSortedByDate(int pageNumber) {
-        // Pageable configs
-        int pageSize = 3;
-        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(Sort.Direction.ASC, "id"));
-
+    public Page<ProjectDto> findAllSortedByDate(Pageable pageable) {
         Page<Project> projects = repository.findAll(pageable);
         return new PageImpl<ProjectDto>(
                 projects.getContent().stream()
@@ -39,18 +35,13 @@ public class ProjectService {
         );
     }
 
-    public Page<ProjectDto> findAllSearchedByQuery(int pageNumber, String query) {
-        // Pageable configs
-        int pageSize = 3;
-        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(Sort.Direction.ASC, "id"));
-
+    public Page<ProjectDto> findAllSearchedByQuery(Pageable pageable, String query) {
         // Setting up specifications to search for a project by matches
         ProjectSpecification nameLike = new ProjectSpecification(new SearchCriteria("name", ":", query));
         ProjectSpecification descriptionLike = new ProjectSpecification(new SearchCriteria("description", ":", query));
         ProjectSpecification userNameLike = new ProjectSpecification(new SearchCriteria("user.fullName", "->:", query));
-        ProjectSpecification priorityLike = new ProjectSpecification(new SearchCriteria("priority", ":", query));
 
-        Page<Project> projects = repository.findAll(Specification.where(nameLike).or(descriptionLike).or(userNameLike).or(priorityLike), pageable);
+        Page<Project> projects = repository.findAll(Specification.where(nameLike).or(descriptionLike).or(userNameLike), pageable);
         return new PageImpl<ProjectDto>(
                 projects.getContent().stream()
                         .map(ProjectDto::from)

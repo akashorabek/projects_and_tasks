@@ -6,6 +6,9 @@ import com.forum.model.dto.ProjectDto;
 import com.forum.service.ProjectService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -18,14 +21,14 @@ public class ProjectRestController {
     private final ProjectService service;
 
     @GetMapping("/api/projects")
-    public Page<ProjectDto> getProjects(@RequestParam(defaultValue = "0") int page) {
-        return service.findAllSortedByDate((int)page);
+    public Page<ProjectDto> getProjects(@PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC, size = 3) Pageable pageable) {
+        return service.findAllSortedByDate(pageable);
     }
 
     @GetMapping("/api/projects/search")
-    public Page<ProjectDto> getSearchedProjects(@RequestParam(defaultValue = "0") int page,
+    public Page<ProjectDto> getSearchedProjects(@PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC, size = 3) Pageable pageable,
                                            @RequestParam(defaultValue = "") String query) {
-        return service.findAllSearchedByQuery((int)page, query);
+        return service.findAllSearchedByQuery(pageable, query);
     }
 
     @GetMapping("/api/projects/{id}")
