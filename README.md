@@ -13,6 +13,7 @@ Technologies used:
 -Java 11
 -Spring Boot
 -Spring JPA
+-Spring security
 -Spring Web
 -Postgresql
 -JS, Jquery, Bootstrap
